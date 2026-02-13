@@ -1,0 +1,114 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Memory Museum 💌</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- Intro "Cinnamoroll flood" screen -->
+    <div class="intro" id="intro" aria-hidden="true">
+        <div class="intro-grid" id="introGrid"></div>
+    </div>
+
+    <!-- Floating hearts background -->
+    <div class="hearts" aria-hidden="true"></div>
+
+    <!-- Welcome -->
+    <section class="section hero" id="welcome">
+        <div class="hero-inner">
+            <div class="guide-wrap">
+                <div class="guide">
+                    <div class="cinnamo" role="img" aria-label="Cinnamoroll"></div>
+
+                    <div class="speech">
+                        <h1>Welcome to our Memory Museum</h1>
+                        <p>
+                            Hi love 🤍 I’m Cinnamoroll, your tiny museum guide today.
+                            Scroll down and let’s walk through our memories together.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memory Lane -->
+    <section class="section lane" id="memory-lane">
+        <div class="container">
+            <h2 class="section-title">Memory Lane</h2>
+            <p class="section-subtitle">
+                A few exhibits that make my heart do backflips.
+            </p>
+
+            <div class="grid">
+                <article class="card">
+                    <div class="frame"><img src="images/photo1.jpg" alt="Memory 1" /></div>
+                    <h3>Exhibit 01</h3>
+                    <p>Our first date. I was really nervous as you know, but luckily you 
+                        find it a bit funny hehe. Our first time ever holding hands btw UwU.</p>
+                </article>
+
+                <article class="card">
+                    <div class="frame"><img src="images/photo2.jpg" alt="Memory 2" /></div>
+                    <h3>Exhibit 02</h3>
+                    <p>In search of aurora but at the end find nothing but darkness. Funny enough
+                        I enjoyed every moment of it lol.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="frame"><img src="images/photo3.jpg" alt="Memory 3" /></div>
+                    <h3>Exhibit 03</h3>
+                    <p>Our first ever steak date. Looking forward to menggendut bareng cha-cha lagi.</p>
+                </article>
+
+                <article class="card">
+                    <div class="frame"><img src="images/photo4.jpeg" alt="Memory 4" /></div>
+                    <h3>Exhibit 04</h3>
+                    <p>Our first ever ball together. Might be the last, as we are already TUA. But you looks so good tho in that dress HEHEHEHE</p>
+                </article>
+
+                <article class="card">
+                    <div class="frame"><img src="images/photo5.jpg" alt="Memory 5" /></div>
+                    <h3>Exhibit 05</h3>
+                    <p>Our first ever half marathon race, I'll see you again in 2 years time yaa bb. SEMANGAT RECOVERY NYAA!!</p>
+                </article>
+
+                <article class="card">
+                    <div class="frame"><img src="images/photo6.jpg" alt="Memory 6" /></div>
+                    <h3>Exhibit 06</h3>
+                    <p>Our last doju together in 2025. I KNOW IT WILL NOT BE THE LAST, AYO BAYARIN AKU DOJU KALO KAMU UDAH BALIK.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Exhibit -->
+    <section class="section finale" id="valentine">
+        <div class="container finale-inner">
+            <h2>Final Exhibit</h2>
+            <p>Would you be my Valentine? 💘</p>
+
+            <div class="choice-box" id="choiceBox">
+                <button class="btn yes" id="yesBtn">Yes 🥰</button>
+                <button class="btn no" id="noBtn">No 🙃</button>
+            </div>
+
+            <div class="result" id="result" aria-live="polite"></div>
+
+            <div class="yes-art" id="yesArt" aria-hidden="true">
+                <img src="images/flower.png" alt="Cinnamoroll with a rose" />
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

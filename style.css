@@ -1,0 +1,371 @@
+/* style.css */
+:root{
+  --bg1:#fff7fb;
+  --bg2:#f4fbff;
+  --ink:#1a1a1a;
+  --muted:#555;
+  --card:#ffffffcc;
+  --stroke:#00000014;
+  --shadow: 0 20px 50px rgba(0,0,0,0.10);
+  --radius: 22px;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(1000px 600px at 20% 10%, var(--bg1), transparent 70%),
+    radial-gradient(900px 600px at 80% 40%, var(--bg2), transparent 70%),
+    #ffffff;
+  overflow-x:hidden;
+}
+
+.section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding: 72px 18px;
+  position: relative;
+}
+
+.container{
+  width:min(1000px, 92vw);
+  margin:0 auto;
+}
+
+.hero{
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-inner{
+  animation: heroIn 1s ease both;
+}
+
+@keyframes heroIn{
+  from{ opacity:0; transform: translateY(20px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+.guide{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+}
+
+.speech h1{
+  margin:0 0 10px 0;
+  font-size: clamp(28px, 4vw, 44px);
+}
+
+.speech p{
+  margin:0;
+  color:var(--muted);
+}
+
+/* Cinnamoroll */
+.cinnamo{
+  width: min(420px, 80vw);
+  height: min(300px, 80vw);
+  margin: 0 auto 10px auto;
+  background: url("images/normal.png") center/contain no-repeat;
+  cursor: pointer;
+  filter: drop-shadow(0 22px 22px rgba(0,0,0,0.10));
+  animation: floaty 2.8s ease-in-out infinite;
+  transition: transform .3s ease, filter .3s ease;
+}
+
+.cinnamo:hover{
+  background-image: url("images/heart.png");
+  transform: translateY(-8px) scale(1.04);
+}
+
+@keyframes floaty{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-8px); }
+  100%{ transform: translateY(0); }
+}
+
+/* Spin directions + scrappy steps */
+.cinnamo.twirl-cw{
+  animation: spinCW 0.9s steps(10, end);
+}
+.cinnamo.twirl-ccw{
+  animation: spinCCW 0.9s steps(10, end);
+}
+
+@keyframes spinCW{
+  from{ transform: translateY(0) rotate(0deg); }
+  to{ transform: translateY(0) rotate(360deg); }
+}
+@keyframes spinCCW{
+  from{ transform: translateY(0) rotate(0deg); }
+  to{ transform: translateY(0) rotate(-360deg); }
+}
+
+/* Memory Lane */
+.lane{
+  background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.7) 100%);
+}
+
+.section-title{
+  font-size: clamp(28px, 3vw, 40px);
+  margin: 0 0 8px 0;
+}
+
+.section-subtitle{
+  color:var(--muted);
+  margin: 0 0 24px 0;
+  line-height: 1.6;
+}
+
+/* Grid */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:18px;
+  position: relative;
+}
+
+@media (max-width: 860px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+.card{
+  padding:16px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadow);
+}
+
+.frame{
+  border-radius: 18px;
+  overflow:hidden;
+  border:1px solid var(--stroke);
+  background:#fff;
+}
+
+.frame img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
+}
+
+/* DEAL effect: stacked at center then fly to grid slots */
+.grid .card{
+  transition-property: transform;
+  transition-duration: 650ms;
+  transition-timing-function: steps(9, end);
+  will-change: transform;
+}
+
+/* Stacked: pull each card into grid center using computed vars */
+.grid.stacked .card{
+  transform: translate(var(--dx), var(--dy)) scale(0.68) rotate(var(--rot));
+}
+
+/* Spread: sit in real positions */
+.grid.spread .card{
+  transform: translate(0px, 0px) scale(1) rotate(0deg);
+  animation: landJitter 140ms steps(4, end) 650ms; /* delay matches transition-duration */
+}
+
+
+@keyframes landJitter{
+  0%{ transform: translate(0px, 0px) rotate(0deg); }
+  50%{ transform: translate(1px, -1px) rotate(0.3deg); }
+  100%{ transform: translate(0px, 0px) rotate(0deg); }
+}
+
+/* Final */
+.finale{
+  background:
+    radial-gradient(900px 500px at 50% 20%, rgba(255, 196, 221, 0.45), transparent 70%),
+    radial-gradient(900px 500px at 70% 70%, rgba(186, 233, 255, 0.55), transparent 70%),
+    #fff;
+}
+
+.finale-inner{
+  text-align:center;
+}
+
+.choice-box{
+  margin: 18px auto 0 auto;
+  width: min(520px, 92vw);
+  height: 140px;
+  position: relative;
+  border-radius: var(--radius);
+  border: 1px dashed #00000025;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+
+.btn{
+  border:none;
+  padding: 12px 16px;
+  border-radius: 999px;
+  cursor:pointer;
+  font-weight: 650;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+  user-select:none;
+}
+
+.yes{
+  background: #0f172a;
+  color:#fff;
+  position:absolute;
+  left: 22%;
+  top: 56%;
+  transform: translate(-50%, -50%);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.yes:hover{
+  transform: translate(-50%, -52%) scale(1.03);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.15);
+}
+
+.no{
+  background: #ffffff;
+  color:#111;
+  position:absolute;
+  left: 72%;
+  top: 56%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--stroke);
+}
+
+.result{
+  margin-top: 18px;
+  font-size: 18px;
+  font-weight: 650;
+}
+
+/* Floating hearts */
+.hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+
+.section, .container, .hero-inner{
+  z-index:1;
+  position:relative;
+}
+
+.heart{
+  position:absolute;
+  opacity: 0;
+  animation: floatUp linear forwards;
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,.08));
+}
+
+@keyframes floatUp{
+  0%{ transform: translateY(40px) scale(.9) rotate(0deg); opacity:0; }
+  10%{ opacity:.9; }
+  100%{ transform: translateY(-110vh) scale(1.25) rotate(260deg); opacity:0; }
+}
+
+
+/* YES surprise art */
+.yes-art{
+  margin: 18px auto 0 auto;
+  width: min(520px, 92vw);
+  display: none;               /* hidden until Yes */
+  justify-content: center;
+}
+
+.yes-art img{
+  width: min(420px, 85vw);
+  height: auto;
+  display: block;
+  transform-origin: center;
+  filter: drop-shadow(0 22px 26px rgba(0,0,0,0.18));
+}
+
+/* Punchy "impact" animation */
+@keyframes punchPop{
+  0%   { transform: scale(0.15) rotate(-10deg); filter: blur(2px); }
+  45%  { transform: scale(1.25) rotate(6deg);   filter: blur(0px); }
+  70%  { transform: scale(0.92) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Screen punch effect (tiny shake) */
+@keyframes screenPunch{
+  0%   { transform: translate(0,0); }
+  20%  { transform: translate(-8px, 6px); }
+  40%  { transform: translate(7px, -5px); }
+  60%  { transform: translate(-5px, -4px); }
+  80%  { transform: translate(6px, 5px); }
+  100% { transform: translate(0,0); }
+}
+
+.screen-punch{
+  animation: screenPunch 240ms steps(5, end);
+}
+
+/* style.css (paste near the bottom, or after your .hearts styles) */
+
+/* Intro overlay */
+.intro{
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+  opacity: 1;
+  transition: opacity 700ms ease;
+}
+
+/* Fade out + let clicks/scroll pass through */
+.intro.hide{
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* A grid that fills the screen with little Cinnamorolls */
+.intro-grid{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  align-content: center;
+  justify-items: center;
+}
+
+/* Each pop-in tile */
+.intro-tile{
+  width: 90px;
+  height: 70px;
+  background: center/contain no-repeat;
+  transform: scale(0.1) rotate(-6deg);
+  opacity: 0;
+  filter: drop-shadow(0 14px 16px rgba(0,0,0,0.12));
+  animation: popIn 320ms steps(6, end) forwards;
+}
+
+@keyframes popIn{
+  0%   { transform: scale(0.1) rotate(-10deg); opacity: 0; }
+  60%  { transform: scale(1.25) rotate(6deg);  opacity: 1; }
+  100% { transform: scale(1) rotate(0deg);     opacity: 1; }
+}
+
+/* Optional: prevent scroll until intro finishes */
+body.locked{
+  overflow: hidden;
+}
